@@ -239,4 +239,15 @@ export class StationModel extends BaseModel {
       throw error;
     }
   }
+
+  async getStationById(stationId: string): Promise<Station | null> {
+    const query = "SELECT * FROM stations WHERE station_id = $1";
+    try {
+      const result = await this.pool.query(query, [stationId]);
+      return result.rows[0] || null;
+    } catch (error) {
+      console.error(`Error fetching station by ID ${stationId}:`, error);
+      throw error;
+    }
+  }
 }

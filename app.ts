@@ -70,7 +70,7 @@ app.use((req, res, next) => {
   next();
 });
 
-const stationController = new StationController(stationModel, pool);
+const stationController = new StationController(stationModel);
 const stationRouter = createStationRouter(stationController);
 const chatRouter = createChatRouter(stationModel);
 
